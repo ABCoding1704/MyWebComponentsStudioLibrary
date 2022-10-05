@@ -1,0 +1,14 @@
+{
+  "name": "@components-studio/abcoding1704.vue3-l8u81meh",
+  "version": "0.0.0",
+  "description": "",
+  "license": "ISC",
+  "type": "module",
+  "homepage": "{{ homepage }}",
+  "scripts": {
+    "serve": "npx cso-cli@latest serve 1xJ0A1eSltZlNnCZRUbX --open"
+  },
+  "dependencies": {
+    "vue": "next"
+  }
+}
