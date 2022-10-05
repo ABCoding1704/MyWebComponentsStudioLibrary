@@ -1,0 +1,21 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "sourceMap": true,
+    "allowJs": true,
+    "declaration": true,
+    "noEmit": false,
+    "isolatedModules": true,
+    "strict": true,
+    
+  },
+  "files": [
+    "src/map/leaflet/LeafletFunctions.ts",
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.vite-config.json"
+    }
+  ]
+}

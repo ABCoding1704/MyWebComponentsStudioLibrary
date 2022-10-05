@@ -9,6 +9,9 @@
     "serve": "npx cso-cli@latest serve 1xJ0A1eSltZlNnCZRUbX --open"
   },
   "dependencies": {
-    "vue": "next"
+    "create-vue": "^3.3.4",
+    "pinia": "^2.0.22",
+    "vite": "^3.1.4",
+    "vue": "^3.2.36"
   }
 }
