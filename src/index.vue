@@ -2,36 +2,59 @@
 import { defineStore } from 'pinia';
 import { defineComponent, defineCustomElement, ref, reactive } from 'vue'
 
-// export const store = defineStore('TooltipContainsDropdownSelectionControlStore', {
-// export const store = defineStore('TooltipContainsDropdownSelectionControlStore', {
-//   state: () => 
-    
-//   },
-  
-// )
-export const TooltipSelectionStore = defineStore('TooltipSelection', ({
-    state: () => ({
-        tooltipText: "tooltipText",
-
-    }),
-  })
-)
-
-
-export default defineComponent({
-    data() {
-
-        return {
-
-        }
-    },
-    setup() {
-
-        return {
-
-        }
+export interface ITooltipSelectionItem {
+        ID: number;
+        Text: string;
+        Emmitter: string
     }
-})
+
+    const emptyTooltipSelectionItem = reactive<ITooltipSelectionItem[]>([
+        {
+            ID: 0, 
+            Text: "Option1",
+            Emmitter: "VorschaegePopup"
+        },
+        {
+            ID: 1, 
+            Text: "Option2",
+            Emmitter: "VorschaegePopup"
+        }
+    ])
+    const datasourceSelection = ref([emptyTooltipSelectionItem]);
+
+
+
+    export const TooltipSelectionStore = defineStore('TooltipSelection', ({
+        state: () => ({
+            Visibility: true,
+            Tooltiptext: "Hallo, das ist ein Tooltip mit mehreren Optionen zum auswählen",
+            datasourceSelection: datasourceSelection,
+            selectedItem: -1
+        }),
+      })
+    )
+    
+    // let tooltipText: string = "Hallo, das ist ein Tooltip mit mehreren Optionen zum auswählen"
+    export default defineComponent({
+        name: 'TooltipContainsDropdownSelectionControl',
+        data() {
+            
+            return {
+                tooltipText: this.tooltipText,
+                datasrcSelection: datasourceSelection
+            }
+        },
+        setup() {
+            datasourceSelection.value = []
+            return {
+                datasourceSelection
+            }
+        },
+        mounded() {
+            this.tooltipText
+        }
+    })
+    
 
 
 </script>
