@@ -50,7 +50,7 @@ export interface ITooltipSelectionItem {
                 datasourceSelection
             }
         },
-        methods() {
+        methods: {
             ShowToolTip(element) {
                 console.debug(element)
             },

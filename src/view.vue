@@ -1,27 +1,37 @@
 <script lang="ts">
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive } from 'vue';
+import TooltipContainsDropdownSelectionControl from './TooltipContainsDropdownSelectionControl.vue'
 
 export default defineComponent({
-    data() {
+  components: {
+    TooltipContainsDropdownSelectionControl
+  },
+  data() {
 
-        return {
+      return {
 
-        }
+      }
+  },
+  setup() {
+
+      return {
+
+      }
+  },
+  methods: {
+    ShowToolTip(element: any) {
+      // var boxElement = document.getElementById(element.)
+     
+      // var posX: number = e.clientX
+      // var posY: number = e.clientY
+      // console.debug(element)
+      alert(element)
+      // console.debug("Element x-Pos: " + element.posX + "\nElement y-Pos: " + element.posY)
     },
-    setup() {
+    HideToolTip(element: any) {
 
-        return {
-
-        }
-    },
-    methods: {
-      ShowToolTip(name: string) {
-
-      },
-      HideToolTip(name: string) {
-
-      }     
-    }
+    }     
+  }
 })
 
 
@@ -29,13 +39,19 @@ export default defineComponent({
 
 
 <template>
-  <div name="red" class="container red" @mouseover="ShowToolTip(this.$name)" @mousedown="HideToolTip(this.$name)"/>
-  <div name="blue" class="container blue" @mouseover="ShowToolTip(this.$name)" @mousedown="HideToolTip(this.$name)"/>
-  <div name="green" class="container green" @mouseover="ShowToolTip(this.$name)" @mousedown="HideToolTip(this.$name)"/>
+  <div class="boxes">
+    <div name="red" class="box red" @mouseenter="ShowToolTip(this)" @mouseleave="HideToolTip(this)"/>
+    <div name="blue" class="box blue" @mouseover="ShowToolTip(this)" @mousedown="HideToolTip(this)"/>
+    <div name="green" class="box green" @mouseover="ShowToolTip(this)" @mousedown="HideToolTip(this)"/>
+  </div>
+
+  <div class="tooltip-container">
+    <TooltipContainsDropdownSelectionControl></TooltipContainsDropdownSelectionControl>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.container {
+.box {
   height: 100px;
   width: 100px;
 }
@@ -52,11 +68,14 @@ export default defineComponent({
   background-color: green;
 }
 
-.image {
-  height: 100px;
-  width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
+.tooltip-container {
+  position: absolute;
+  height: fit-content;
+  width: fit-content;
+  left: v-bind('x');
+  top: v-bind('y');
+  z-index: 1;
 }
+
+
 </style>
